@@ -31,55 +31,27 @@
   <main class="max-w-5xl mx-auto px-6 py-12">
     <h1 class="text-3xl md:text-4xl font-extrabold">Tu Cesta</h1>
     <p class="mt-3 text-lg text-gray-600">Revisa los bundles que has añadido antes de confirmar el pago.</p>
+
     <!-- AVISO DE DEMO -->
-<div class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 p-4 mb-6 rounded-md text-center">
-  ⚠️ En este momento estamos en <strong>demostración</strong>. No se pueden realizar pedidos reales.
-</div>
+    <div class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 p-4 mt-6 mb-6 rounded-md text-center">
+      ⚠️ En este momento estamos en <strong>demostración</strong>. No se pueden realizar pedidos reales.
+    </div>
+
     <!-- CESTA -->
     <section id="cart" class="mt-10 bg-white rounded-2xl shadow-sm p-6">
-      <div id="cart-items" class="divide-y">
-
-        <!-- ITEM 1 -->
-        <div class="cart-item py-4 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center font-bold text-indigo-600">🎬</div>
-            <div>
-              <p class="font-medium">Pack Cine & Series</p>
-              <p class="text-xs text-gray-500">Netflix + Disney+ + HBO Max</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-6">
-            <span class="price font-semibold">19.99</span>€
-            <button class="remove-btn text-sm text-red-600 hover:underline">Eliminar</button>
-          </div>
-        </div>
-
-        <!-- ITEM 2 -->
-        <div class="cart-item py-4 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center font-bold text-indigo-600">🎧</div>
-            <div>
-              <p class="font-medium">Pack Música </p>
-              <p class="text-xs text-gray-500">Spotify + SoundCloud Pro</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-6">
-            <span class="price font-semibold">15.99</span>€
-            <button class="remove-btn text-sm text-red-600 hover:underline">Eliminar</button>
-          </div>
-        </div>
-
-      </div>
+      <div id="cart-items" class="divide-y"></div>
 
       <!-- TOTAL -->
       <div class="mt-6 flex items-center justify-between text-lg font-semibold">
         <span>Total</span>
-        <span id="total">€35.98</span>
+        <span id="total">€0.00</span>
       </div>
 
       <!-- CTA -->
       <div class="mt-6 flex justify-end">
-        <a href="checkout.html" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium">Proceder al pago</a>
+        <a href="#" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium opacity-50 cursor-not-allowed">
+          Proceder al pago
+        </a>
       </div>
     </section>
   </main>
@@ -91,24 +63,57 @@
 
   <!-- SCRIPT -->
   <script>
-    function updateTotal() {
+    const cartItemsContainer = document.getElementById("cart-items");
+    const totalElement = document.getElementById("total");
+
+    // --- Función para renderizar la cesta ---
+    function renderCart() {
+      cartItemsContainer.innerHTML = "";
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
       let total = 0;
-      document.querySelectorAll('.cart-item').forEach(item => {
-        const priceEl = item.querySelector('.price');
-        if (priceEl) {
-          total += parseFloat(priceEl.textContent);
-        }
+
+      cart.forEach((item, index) => {
+        total += parseFloat(item.price);
+
+        const div = document.createElement("div");
+        div.className = "cart-item py-4 flex items-center justify-between";
+        div.innerHTML = `
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center font-bold text-indigo-600">${item.icon}</div>
+            <div>
+              <p class="font-medium">${item.name}</p>
+              <p class="text-xs text-gray-500">${item.description}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <span class="price font-semibold">${item.price}</span>€
+            <button class="remove-btn text-sm text-red-600 hover:underline" data-index="${index}">Eliminar</button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(div);
       });
-      document.getElementById('total').textContent = "€" + total.toFixed(2);
+
+      totalElement.textContent = "€" + total.toFixed(2);
+
+      // Activar botones de eliminar
+      document.querySelectorAll(".remove-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const idx = this.getAttribute("data-index");
+          removeFromCart(idx);
+        });
+      });
     }
 
-    document.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.addEventListener('click', function () {
-        const item = this.closest('.cart-item');
-        item.remove();
-        updateTotal();
-      });
-    });
+    // --- Eliminar item de la cesta ---
+    function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    // --- Inicializar ---
+    window.onload = renderCart;
   </script>
 </body>
 </html>
