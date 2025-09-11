@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BundleX - Demo</title>
+  <title>BundleX Demo</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-
+<body class="bg-gray-50 text-gray-900 antialiased">
   <!-- HEADER -->
   <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
     <div class="flex items-center gap-3">
@@ -26,18 +25,15 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-6">
-
     <!-- HERO -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-12">
       <div>
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Todas tus suscripciones. <span class="text-indigo-600">Un solo pago.</span></h1>
         <p class="mt-4 text-lg text-gray-600">Ahorra tiempo y dinero. Administra, pausa y ahorra en tus servicios de streaming, música y gaming desde un único panel.</p>
-
         <div class="mt-6 flex items-center gap-4">
           <a href="#bundles" class="inline-flex items-center px-5 py-3 bg-indigo-600 text-white rounded-lg font-medium">Ver bundles</a>
           <a href="#contact" class="text-sm text-gray-700 hover:underline">Hablar con ventas →</a>
         </div>
-
         <ul class="mt-8 flex flex-wrap gap-4 text-xs text-gray-500">
           <li class="flex items-center gap-2">✔ Ahorros reales</li>
           <li class="flex items-center gap-2">✔ Un solo pago</li>
@@ -96,57 +92,53 @@
     <section id="bundles" class="py-12">
       <h2 class="text-2xl font-bold">Nuestros bundles</h2>
       <p class="text-gray-600 mt-2">Elige el pack que más te convenga — todos con una tarifa única y descuento sobre precio combinado.</p>
-
       <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
           <div class="flex items-center justify-between">
             <h3 class="font-semibold">Pack Cine & Series</h3>
             <div class="text-sm text-indigo-600 font-medium">Ahorras 20%</div>
           </div>
           <ul class="mt-4 space-y-2 text-sm text-gray-600">
-            <li>Netflix</li>
-            <li>Disney+</li>
-            <li>HBO Max</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">N</span>Netflix</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">D</span>Disney+</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">H</span>HBO Max</li>
           </ul>
-          <div class="mt-6 flex items-center justify-center">
-            <a href="pack_cine_series.html" class="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium">Seleccionar</a>
+          <div class="mt-6">
+            <a href="detalle_pack.html" class="inline-block w-full text-center px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Seleccionar Pack</a>
           </div>
-        </article>
+        </div>
 
-        <article class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
           <div class="flex items-center justify-between">
             <h3 class="font-semibold">Pack Música & Gaming</h3>
             <div class="text-sm text-indigo-600 font-medium">Ahorras 15%</div>
           </div>
           <ul class="mt-4 space-y-2 text-sm text-gray-600">
-            <li>Spotify</li>
-            <li>Xbox Game Pass</li>
-            <li>SoundCloud Pro</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">S</span>Spotify</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">X</span>Xbox Game Pass</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">SC</span>SoundCloud Pro</li>
           </ul>
-          <div class="mt-6 flex items-center justify-center">
-            <a href="pack_musica_gaming.html" class="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium">Seleccionar</a>
+          <div class="mt-6">
+            <a href="detalle_pack.html" class="inline-block w-full text-center px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Seleccionar Pack</a>
           </div>
-        </article>
+        </div>
 
-        <article class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
           <div class="flex items-center justify-between">
             <h3 class="font-semibold">Pack Familiar</h3>
             <div class="text-sm text-indigo-600 font-medium">Ahorras 18%</div>
           </div>
           <ul class="mt-4 space-y-2 text-sm text-gray-600">
-            <li>Disney+</li>
-            <li>Spotify Familiar</li>
-            <li>Cloud 1TB</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">D</span>Disney+</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">S</span>Spotify Familiar</li>
+            <li class="flex items-center gap-3"><span class="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center text-xs">C</span>Cloud 1TB</li>
           </ul>
-          <div class="mt-6 flex items-center justify-center">
-            <a href="pack_familiar.html" class="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium">Seleccionar</a>
+          <div class="mt-6">
+            <a href="detalle_pack.html" class="inline-block w-full text-center px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Seleccionar Pack</a>
           </div>
-        </article>
+        </div>
       </div>
     </section>
-
   </main>
-
 </body>
 </html>
-
