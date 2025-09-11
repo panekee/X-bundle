@@ -78,23 +78,16 @@
     <!-- BOTÓN -->
 <button 
   onclick="addToCart('Pack Cine & Series', 'Netflix + Disney+ + HBO Max', '29.99', '🎬')" 
-  class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium mt-6">
+  class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium">
   Añadir a la cesta
 </button>
 
-<!-- SCRIPT -->
 <script>
   function addToCart(name, description, price, icon) {
-    // Recuperar lo que ya hay en la cesta
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // Crear el nuevo item
-    const item = { pack musica🎵, Spotify + SoundCloud Pro, 14,99, 🎵 };
-
-    // Guardar en localStorage
+    const item = { name, description, price, icon };
     cart.push(item);
     localStorage.setItem("cart", JSON.stringify(cart));
-
     alert(name + " ha sido añadido a tu cesta 🛒");
   }
 </script>
