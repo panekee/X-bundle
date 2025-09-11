@@ -31,12 +31,16 @@
   <main class="max-w-5xl mx-auto px-6 py-12">
     <h1 class="text-3xl md:text-4xl font-extrabold">Tu Cesta</h1>
     <p class="mt-3 text-lg text-gray-600">Revisa los bundles que has añadido antes de confirmar el pago.</p>
-
+    <!-- AVISO DE DEMO -->
+<div class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 p-4 mb-6 rounded-md text-center">
+  ⚠️ En este momento estamos en <strong>demostración</strong>. No se pueden realizar pedidos reales.
+</div>
     <!-- CESTA -->
-    <section class="mt-10 bg-white rounded-2xl shadow-sm p-6">
-      <div class="divide-y">
+    <section id="cart" class="mt-10 bg-white rounded-2xl shadow-sm p-6">
+      <div id="cart-items" class="divide-y">
+
         <!-- ITEM 1 -->
-        <div class="py-4 flex items-center justify-between">
+        <div class="cart-item py-4 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center font-bold text-indigo-600">🎬</div>
             <div>
@@ -45,13 +49,13 @@
             </div>
           </div>
           <div class="flex items-center gap-6">
-            <span class="font-semibold">€19.99</span>
-            <button class="text-sm text-red-600 hover:underline">Eliminar</button>
+            <span class="price font-semibold">19.99</span>€
+            <button class="remove-btn text-sm text-red-600 hover:underline">Eliminar</button>
           </div>
         </div>
 
         <!-- ITEM 2 -->
-        <div class="py-4 flex items-center justify-between">
+        <div class="cart-item py-4 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center font-bold text-indigo-600">🎧</div>
             <div>
@@ -60,16 +64,17 @@
             </div>
           </div>
           <div class="flex items-center gap-6">
-            <span class="font-semibold">€15.99</span>
-            <button class="text-sm text-red-600 hover:underline">Eliminar</button>
+            <span class="price font-semibold">15.99</span>€
+            <button class="remove-btn text-sm text-red-600 hover:underline">Eliminar</button>
           </div>
         </div>
+
       </div>
 
       <!-- TOTAL -->
       <div class="mt-6 flex items-center justify-between text-lg font-semibold">
         <span>Total</span>
-        <span>€35.98</span>
+        <span id="total">€35.98</span>
       </div>
 
       <!-- CTA -->
@@ -83,5 +88,27 @@
   <footer class="py-8 mt-12 border-t text-center text-sm text-gray-500">
     © 2025 BundleX — Demo
   </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function updateTotal() {
+      let total = 0;
+      document.querySelectorAll('.cart-item').forEach(item => {
+        const priceEl = item.querySelector('.price');
+        if (priceEl) {
+          total += parseFloat(priceEl.textContent);
+        }
+      });
+      document.getElementById('total').textContent = "€" + total.toFixed(2);
+    }
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const item = this.closest('.cart-item');
+        item.remove();
+        updateTotal();
+      });
+    });
+  </script>
 </body>
 </html>
