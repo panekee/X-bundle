@@ -1,93 +1,137 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MicroAPIs — APIs gratis para creadores</title>
-  <meta name="description" content="Colección de Micro-APIs gratuitas para crecimiento, creación de contenido y automatización." />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>XBundle — Herramientas para creadores (Compra ahora)</title>
+<style>
+  body{font-family:Inter,system-ui,Arial;margin:0;background:#07070a;color:#e6e6e6}
+  .wrap{max-width:980px;margin:40px auto;padding:30px}
+  h1{font-size:36px;margin:0 0 10px;color:#fff}
+  .lead{color:#bfc3c8;margin-bottom:20px}
+  .badge{display:inline-block;background:#ff3b30;color:#fff;padding:6px 10px;border-radius:6px;margin-bottom:12px}
+  .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+  .card{background:#0f0f14;padding:18px;border-radius:10px;box-shadow:0 6px 30px rgba(0,0,0,.6)}
+  .cta{background:#ff3b30;color:#fff;border:none;padding:14px 18px;border-radius:8px;font-weight:700;cursor:pointer}
+  .muted{color:#98a0a6;font-size:13px}
+  pre{background:#050507;padding:12px;border-radius:8px;overflow:auto;color:#cde}
+  .features{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+  .feature{background:#0b0b0e;padding:10px;border-radius:8px}
+  .small{font-size:13px;color:#a9b0b5}
+  .price{font-size:28px;font-weight:800}
+  .scarcity{color:#ffb3b0;font-weight:700}
+  footer{margin-top:30px;color:#7f858a;font-size:13px}
+</style>
 </head>
 <body>
-  <main class="container">
-    <header class="top">
+  <div class="wrap">
+    <div class="badge">LANZAMIENTO — Acceso temprano limitado</div>
+    <h1>XBundle — Toolkit para Creadores</h1>
+    <div class="lead">Genera bios, títulos virales, guiones, hooks y todo lo necesario para que tus vídeos peguen — en segundos. Precio ridículo. Resultado real.</div>
+
+    <div class="grid">
       <div>
-        <div class="tag">MicroAPIs · Gratis</div>
-        <h1>APIs ultraligeras para crecer rápido</h1>
-        <p class="muted">Endpoints simples · Respuestas claras · Key demo inmediata</p>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="price">10 € <span class="small">Pack Creator Pro</span></div>
+              <div class="small">Acceso a las 10 APIs + 5.000 usos / 30 días</div>
+            </div>
+            <div>
+              <button id="buyPro" class="cta">COMPRAR AHORA</button>
+            </div>
+          </div>
+          <div class="features">
+            <div class="feature"><strong>Bios virales</strong> — 10 estilos instant.</div>
+            <div class="feature"><strong>Títulos clickbait</strong> — 50 variaciones por tema.</div>
+            <div class="feature"><strong>Guiones de 7s</strong> — listos para grabar.</div>
+            <div class="feature"><strong>Ideas sin cara</strong> — 10 ideas por tema.</div>
+            <div class="feature"><strong>Hashtags & Hooks</strong> — combos listos.</div>
+          </div>
+          <div style="margin-top:12px" class="muted">Pago seguro vía Stripe. Recibirás tu API Key al instante después del pago.</div>
+        </div>
+
+        <div style="margin-top:16px" class="card">
+          <h3 style="margin:0 0 8px">Demo en vivo: genera 5 títulos ahora</h3>
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <input id="topic" placeholder="tema (ej. gadgets baratos)" style="flex:1;padding:8px;border-radius:6px;border:1px solid #222;background:#07070b;color:#eee"/>
+            <button id="demoBtn" class="cta" style="padding:10px 12px">Generar</button>
+          </div>
+          <pre id="demoOut">Introduce un tema y pulsa GENERAR (demo gratuito).</pre>
+          <div class="small" style="margin-top:8px">Demo limitado. Compra para eliminar límites y recibir API Key.</div>
+        </div>
+
+        <div style="margin-top:16px" class="card">
+          <h3 style="margin:0 0 8px">Cómo usar (3 pasos)</h3>
+          <ol class="small">
+            <li>Compra el Pack → Recibirás API Key.</li>
+            <li>Llama al endpoint con tu key: <code>POST /titles</code>.</li>
+            <li>Usa los resultados en tus vídeos. Repite.</li>
+          </ol>
+        </div>
       </div>
 
-      <button id="get-key" class="btn">Obtener key demo</button>
-    </header>
+      <div>
+        <div class="card">
+          <h3 style="margin:0 0 10px">Oferta limitada</h3>
+          <div class="scarcity">Solo 30 Packs Lifetime (25€) — ¡quedan <span id="left">30</span>!</div>
+          <div style="margin-top:12px" class="small">La oferta crea urgencia. Puedes automatizar la reducción cuando se agoten (backend).</div>
+          <div style="margin-top:14px">
+            <button id="buyLite" class="cta" style="width:100%;background:#ff9f1c">COMPRAR LIFETIME 25€</button>
+          </div>
+        </div>
 
-    <section class="hero">
-      <p><strong>Para creadores, marketers y devs</strong>. Micro-endpoints listos para usar gratis.  
-      Pega tu key demo y llama a cualquier endpoint.</p>
-    </section>
+        <div style="margin-top:12px" class="card">
+          <h4 style="margin:0 0 8px">Preguntas rápidas</h4>
+          <div class="small"><strong>Entrega:</strong> clave al instante tras el pago.</div>
+          <div class="small"><strong>Soporte:</strong> via Discord (link en la compra).</div>
+          <div class="small"><strong>Reembolso:</strong> 24h solo si no funciona técnicamente.</div>
+        </div>
 
-    <section class="grid">
-      <!-- 1 -->
-      <div class="card">
-        <h3>Descripciones TikTok Shop</h3>
-        <p class="muted">Genera descripciones optimizadas para conversión.</p>
-        <div class="endpoint">POST /api/desc-tikshop</div>
-        <a href="api-examples/desc-tikshop.html" class="btn-ghost">Ver ejemplo</a>
+        <div style="margin-top:12px" class="card">
+          <h4 style="margin:0 0 8px">Ejemplo de uso (curl)</h4>
+          <pre>curl -X POST "https://xbundle.xyz/titles" -H "Content-Type:application/json" -H "x-api-key: TU_KEY" -d '{"topic":"gadgets baratos","variations":10}'</pre>
+        </div>
       </div>
+    </div>
 
-      <!-- 2 -->
-      <div class="card">
-        <h3>Texto → Guion de vídeo</h3>
-        <p class="muted">Convierte texto simple en guion estructurado.</p>
-        <div class="endpoint">POST /api/text2script</div>
-        <a href="api-examples/text2script.html" class="btn-ghost">Ver ejemplo</a>
-      </div>
-
-      <!-- 3 -->
-      <div class="card">
-        <h3>Títulos virales Shorts</h3>
-        <p class="muted">Genera títulos optimizados para CTR.</p>
-        <div class="endpoint">POST /api/viral-titles</div>
-        <a href="api-examples/viral-titles.html" class="btn-ghost">Ver ejemplo</a>
-      </div>
-
-      <!-- 4 -->
-      <div class="card">
-        <h3>Prompts cortos</h3>
-        <p class="muted">Prompts específicos para ads y creación rápida.</p>
-        <div class="endpoint">POST /api/short-prompts</div>
-        <a href="api-examples/short-prompts.html" class="btn-ghost">Ver ejemplo</a>
-      </div>
-
-      <!-- 5 -->
-      <div class="card">
-        <h3>Evaluación de thumbnails</h3>
-        <p class="muted">Devuelve score y sugerencias rápidas.</p>
-        <div class="endpoint">POST /api/eval-thumb</div>
-        <a href="api-examples/eval-thumb.html" class="btn-ghost">Ver ejemplo</a>
-      </div>
-
-      <!-- 6 -->
-      <div class="card">
-        <h3>Hooks de 3 segundos</h3>
-        <p class="muted">Hooks ultracortos para captar atención.</p>
-        <div class="endpoint">POST /api/3s-hooks</div>
-        <a href="api-examples/3s-hooks.html" class="btn-ghost">Ver ejemplo</a>
-      </div>
-    </section>
-
-    <section class="docs">
-      <h2>Documentación rápida</h2>
-      <ul>
-        <li>POST JSON</li>
-        <li>Header: Authorization: Bearer &lt;API_KEY&gt;</li>
-        <li>Rate limit: 60 rpm (demo)</li>
-      </ul>
-    </section>
-
-    <footer class="footer">
-      MicroAPIs © 2025 — Está página es estática.  
+    <footer>
+      <div class="small">XBundle — Herramientas creadas para creadores que quieren resultados. Sin bullshit.</div>
     </footer>
-  </main>
+  </div>
 
-  <script src="app.js"></script>
+<script>
+const DEMO_KEY = "DEMO_KEY";
+document.getElementById('demoBtn').addEventListener('click', async ()=>{
+  const topic = document.getElementById('topic').value || "gadgets baratos";
+  document.getElementById('demoOut').textContent = "Generando...";
+  try {
+    const res = await fetch('/titles', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'x-api-key': DEMO_KEY },
+      body: JSON.stringify({ topic: topic, variations: 5 })
+    });
+    const j = await res.json();
+    document.getElementById('demoOut').textContent = j.result || JSON.stringify(j, null, 2);
+  } catch(e){
+    document.getElementById('demoOut').textContent = 'Error: ' + e.toString();
+  }
+});
+
+// Compra: llama al backend para crear sesión Stripe
+document.getElementById('buyPro').addEventListener('click', async ()=>{
+  const r = await fetch('/create-checkout-session', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({price_id: "price_10_EUR", pack: "pro"})});
+  const j = await r.json();
+  if(j.url) window.location = j.url;
+  else alert('Error creando checkout');
+});
+
+document.getElementById('buyLite').addEventListener('click', async ()=>{
+  const r = await fetch('/create-checkout-session', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({price_id: "price_25_EUR", pack: "lifetime"})});
+  const j = await r.json();
+  if(j.url) window.location = j.url;
+  else alert('Error creando checkout');
+});
+</script>
 </body>
 </html>
