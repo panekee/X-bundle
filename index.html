@@ -106,7 +106,7 @@ document.getElementById('demoBtn').addEventListener('click', async ()=>{
   const topic = document.getElementById('topic').value || "gadgets baratos";
   document.getElementById('demoOut').textContent = "Generando...";
   try {
-    const res = await fetch('/titles', {
+const res = await fetch('https://api.xbundle.xyz/titles', {
       method:'POST',
       headers:{ 'Content-Type':'application/json', 'x-api-key': DEMO_KEY },
       body: JSON.stringify({ topic: topic, variations: 5 })
